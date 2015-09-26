@@ -35,7 +35,10 @@ public class BugController {
 		this.usuarioLogado = usuarioLogado;
 	}
 	
-	@Deprecated
+	/**
+	 * CDI eyes only
+	 * @deprecated
+	 */
 	public BugController() {}
 	
 	/*
@@ -63,7 +66,14 @@ public class BugController {
 	@Get(value="/bugs/{id}")
 	public void buscarPorId(Long id) {
 		Bug bug = dao.buscaPorId(id);
-		//TODO: implementar com a classe
+		if(bug == null) {
+			result.use(Results.status()).noContent();
+		} else {
+			result.use(Results.json()).withoutRoot()
+										.from(bug)
+										.recursive()
+										.serialize();
+		}
 	}
 	
 	@Post(value="/bugs")
@@ -71,14 +81,21 @@ public class BugController {
 	public void adicionar(NovoBugDTO novoBugDTO) {
 		Usuario usuario = (Usuario) usuarioLogado.getSession().getAttribute("usuario");
 		Bug bug = bugService.criaBug(novoBugDTO, usuario);
-		//status .created();
+		dao.adiciona(bug);
+		result.use(Results.status()).created();
 	}
 	
 	@Put(value="/bugs/status/proximo")
 	@Consumes(value="application/json")
 	public void proximoStatus(Long id, String descricao){
+		Bug bug = dao.buscaPorId(id);
 		
-		//status .ok();
+		Usuario usuario = (Usuario) usuarioLogado.getSession().getAttribute("usuario");
+		bug.passaProximaFase(descricao, usuario);
+		
+		dao.atualiza(bug);
+		
+		result.use(Results.status()).ok();
 	}
 	
 	@Put(value="/bugs/status/anterior")
