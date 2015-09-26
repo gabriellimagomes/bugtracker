@@ -4,7 +4,7 @@
 	app.controller('Login', function($scope, $http, appConfig, $localStorage, $window){
 		var vm = this;
 		
-		$scope.login = function(auth) {			
+		$scope.logar = function(auth) {			
 			
 			$http.post(appConfig.path + '/login', auth)
 					.success(function(data, status, getHeader, config) {
