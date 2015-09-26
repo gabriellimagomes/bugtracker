@@ -6,7 +6,7 @@ import br.com.gabriel.mvc.modelo.Bug;
 
 public interface BugDao {
 	void adiciona(Bug bug);
-	Bug buscarPorId(Long id);
+	Bug buscaPorId(Long id);
 	void atualiza(Bug bug);
 	List<Bug> todos();
 }

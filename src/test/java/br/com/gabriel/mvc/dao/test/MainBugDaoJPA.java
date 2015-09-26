@@ -61,7 +61,7 @@ public class MainBugDaoJPA {
 		
 		BugDao dao = new BugDaoJPA(entityManager);
 		
-		Bug bug = dao.buscarPorId(id);
+		Bug bug = dao.buscaPorId(id);
 		
 		System.out.println(bug);
 	}
@@ -72,7 +72,7 @@ public class MainBugDaoJPA {
 		
 		BugDao dao = new BugDaoJPA(entityManager);
 		
-		Bug bug = dao.buscarPorId(id);
+		Bug bug = dao.buscaPorId(id);
 		
 		System.out.println("retornado: " + bug);
 		

@@ -29,15 +29,11 @@ public class BugDaoJPA implements BugDao {
 		entityManager.persist(bug);
 	}
 
-	public Bug buscarPorId(Long id) {
-		System.out.println("BugDaoJPA.buscarPorId() id: " + id);
-		Bug bug = entityManager.find(Bug.class, id);
-		return new Bug(bug);
+	public Bug buscaPorId(Long id) {
+		return null;
 	}
 
 	public void atualiza(Bug bug) {
-		System.out.println(bug);
-		entityManager.merge(bug);
 	}
 
 	public List<Bug> todos() {
