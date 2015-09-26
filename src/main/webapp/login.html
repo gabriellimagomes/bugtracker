@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Novo Bug</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
+  <link rel="stylesheet" type="text/css" href="css/bug-tracker.css">
+</head>
+
+<body ng-app="bugTracker">
+
+	<div class="jumbotron login-container" ng-controller="Login as login">
+		
+		<alert mensagem-erro="login.mensagemErro"></alert>
+		
+		<h2 class="text-center">BugTracker</h2>
+		
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="usuario" class="col-sm-2 control-label">Usuário</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="usuario" ng-model="login.auth.usuario" placeholder="Usuário">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="senha" class="col-sm-2 control-label">Senha</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" id="senha" ng-model="login.auth.senha" placeholder="Senha">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-success btn-block" ng-click="login(login.auth)">Entrar</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="js/module/ngStorage.min.js"></script>
+	<script src="js/app.bug.js"></script>
+	<script src="js/constant/app-config.constant.js"></script>
+	<script src="js/directive/alert.directive.js"></script>
+	<script src="js/controller/login.controller.js"></script>
+</body>
+</html>

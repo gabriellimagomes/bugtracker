@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Mudança da Status</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
+  <link rel="stylesheet" type="text/css" href="css/bug-tracker.css">
+</head>
+
+<body ng-app="bugTracker">
+
+	<ng-include src="'shared/nav.html'"></ng-include>
+
+	<div ng-controller="HistoricoBug as historicoBug" class="container">
+	
+		<div class="row"><alert mensagem-erro="historicoBug.mensagemErro"></alert></div>	
+		
+		<div class="row page-header">
+			<h3>Histórico de Bug</h3>
+		</div>
+
+		<div class="row">
+			<label>Nome:</label>
+			<span>{{historicoBug.bug.nome}}</span>
+		</div>
+		
+		<div class="row">
+			<ul class="list-group">
+  				<li ng-repeat="evento in historicoBug.bug.historicoEventos" class="list-group-item" ng-class="{'list-group-item-info': $first}">
+
+    				<h4 class="list-group-item-heading">{{evento.descricao}}</h4>
+    				<p class="list-group-item-text">
+    					<label>Status:</label> 
+    					<span>{{evento.tipoStatus}}</span>
+    					<span ng-show="$first"><strong>(status atual)</strong></span>
+    					<br />
+    					<label>Responsável:</label>
+    					<span>{{evento.usuario.nome}}</span>
+    					<br />
+    					<label>Data:</label>
+    					<span>{{evento.dataDeCriacao | date:'dd/MM/yyyy HH:mm'}}</span>
+    				</p>
+  				</li>
+			</ul>
+		</div>
+		
+	</div>
+	
+	<ng-include src="'shared/footer.html'"></ng-include>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="js/module/ngStorage.min.js"></script>
+	<script src="js/app.bug.js"></script>
+	<script src="js/constant/app-config.constant.js"></script>
+	<script src="js/service/bug-http.interceptor.js"></script>
+	<script src="js/directive/alert.directive.js"></script>
+	<script src="js/service/bug.service.js"></script>
+	<script src="js/controller/historico-bug.controller.js"></script>
+	<script src="js/controller/login.controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.margin-left 
+{
+	margin-left: 30px;
+}
+.row
+{
+	margin-bottom: 10px;
+}
+.acao
+{
+	margin-left: 5px;
+	cursor: pointer;	
+}
+.login-container
+{
+	width: 50%;
+	height: 50%;
+	margin: auto;
+	padding: 25px;
+	margin-top: 10%;
+}

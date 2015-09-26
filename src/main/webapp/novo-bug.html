@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Novo Bug</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
+  <link rel="stylesheet" type="text/css" href="css/bug-tracker.css">
+</head>
+
+<body ng-app="bugTracker">
+
+	<ng-include src="'shared/nav.html'"></ng-include>
+
+	<div ng-controller="NovoBug as novoBug" class="container">
+	
+		<div class="row"><alert mensagem-sucesso="novoBug.mensagem" mensagem-erro="novoBug.mensagemErro"></alert></div>
+		
+		<div class="row page-header">
+			<h3>Novo Bug</h3>
+		</div>
+		
+		<div class="row">
+			<form>
+
+				<div class="form-group">
+					<label>Nome:</label>
+					<input type="text" class="form-control" placeholder="Nome" id="nome" ng-model="novoBug.bug.nome" />
+				</div>
+				<div class="form-group">
+					<label>Descrição:</label>
+					<textarea class="form-control" placeholder="Descrição" id="descricao" ng-model="novoBug.bug.descricao"></textarea>
+				</div>
+
+				<button ng-click="salvaBug(novoBug.bug)" class="btn btn-success btn-block">Salvar</button>
+
+			</form>
+		</div>
+
+	</div>
+	
+	<ng-include src="'shared/footer.html'"></ng-include>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="js/module/ngStorage.min.js"></script>
+	<script src="js/app.bug.js"></script>
+	<script src="js/constant/app-config.constant.js"></script>
+	<script src="js/service/bug-http.interceptor.js"></script>
+	<script src="js/directive/alert.directive.js"></script>
+	<script src="js/service/bug.service.js"></script>
+	<script src="js/controller/novo-bug.controller.js"></script>
+	<script src="js/controller/login.controller.js"></script>
+</body>
+</html>

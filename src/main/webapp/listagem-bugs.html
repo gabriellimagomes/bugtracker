@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Mudança da Status</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/sticky-footer.css">
+  <link rel="stylesheet" type="text/css" href="css/bug-tracker.css">
+</head>
+
+<body ng-app="bugTracker">
+
+	<ng-include src="'shared/nav.html'"></ng-include>
+
+	<div ng-controller="ListagemBugs as listagemBugs" class="container">
+	
+		<div class="row"><alert mensagem-erro="listagemBugs.mensagemErro"></alert></div>
+	
+		<div class="row page-header">
+			<h3>Bugs</h3>
+		</div>	
+		<div class="row">
+			<table class="table table-striped">
+				<tr>
+					<th>Nome</th>
+					<th>Descrição</th>
+					<th>Status</th>
+					<th>Resp. pelo status atual</th>
+					<th>Ações</th>
+				</tr>
+				<tr ng-repeat="bug in listagemBugs.bugs">					
+					<td>{{bug.nome}}</td>
+					<td>{{bug.eventoAtual.descricao}}</td>
+					<td>{{bug.eventoAtual.tipoStatus}}</td>
+					<td>{{bug.eventoAtual.usuario.nome}}</td>
+					<td>
+						<span ng-click="listagemBugs.direcionaParaMudancaStatus(bug.id)" class="glyphicon glyphicon-transfer acao"></span>
+						<span ng-click="listagemBugs.direcionaParaHistorico(bug.id)" class="glyphicon glyphicon-list acao"></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+	
+	<ng-include src="'shared/footer.html'"></ng-include>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script src="js/module/ngStorage.min.js"></script>
+	<script src="js/app.bug.js"></script>
+	<script src="js/constant/app-config.constant.js"></script>
+	<script src="js/service/bug-http.interceptor.js"></script>
+	<script src="js/directive/alert.directive.js"></script>
+	<script src="js/service/bug.service.js"></script>
+	<script src="js/controller/listagem-bugs.controller.js"></script>
+	<script src="js/controller/login.controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<div ng-show="mensagemSucesso || mensagemErro" class="alert alert-dismissible text-center" role="alert" ng-class="{'alert-success': mensagemSucesso, 'alert-danger': mensagemErro}">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<span ng-show="mensagemSucesso">{{mensagemSucesso}}</span>
+	<span ng-show="mensagemErro">{{mensagemErro}}</span>
+</div>
