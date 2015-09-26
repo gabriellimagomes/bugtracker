@@ -3,16 +3,53 @@ package br.com.gabriel.mvc.modelo;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.SortComparator;
+
 import br.com.gabriel.mvc.modelo.status.TipoStatus;
 
+@Entity
 public class Bug {
 	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String nome;
+	@Transient
 	private TipoStatus tipoStatusProximo;
+	@Transient
 	private TipoStatus tipoStatusAnterior;
+	@Transient
 	private Evento eventoAtual;
+	
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@SortComparator(value=Evento.class)
+	@OrderBy("id DESC")
 	private List<Evento> historicoEventos;
+	
+	
+	/**
+	 * Hibernate eyes only
+	 * @deprecated
+	 */
+	public Bug() {}
+	
+	public Bug(Bug bug) {
+		this.id = bug.id;
+		this.nome = bug.nome;
+		this.historicoEventos = bug.historicoEventos;
+		this.eventoAtual = this.historicoEventos.get(0);
+		this.tipoStatusProximo = getStatusAtual().getProximo();
+		this.tipoStatusAnterior = getStatusAtual().getAnterior();
+	}
 	
 	public Bug(String nome, String descricao, Usuario usuario) {
 		this.nome = nome;

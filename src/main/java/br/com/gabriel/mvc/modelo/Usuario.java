@@ -1,11 +1,19 @@
 package br.com.gabriel.mvc.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+import br.com.caelum.vraptor.serialization.SkipSerialization;
+
+@Entity
 public class Usuario {
-	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String nome;
 	private String email;
+	@SkipSerialization
 	private String senha;
 	
 	public Usuario(String nome, String email, String senha) {
