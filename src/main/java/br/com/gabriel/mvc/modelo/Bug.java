@@ -32,6 +32,10 @@ public class Bug {
 	}
 
 	public void passaFaseAnterior(String descricao, Usuario usuario) {
+		tipoStatusAnterior = getStatusAtual().getAnterior();
+		Evento evento = new Evento(tipoStatusAnterior, descricao, usuario);
+		this.eventoAtual = evento;
+		historicoEventos.add(evento);
 	}
 	
 	public Long getId() {
