@@ -11,10 +11,10 @@
 						vm.mensagemErro = 'Não foi possível listar os bugs existentes';
 					});
 		this.direcionaParaMudancaStatus = function(idBug) {
-			$window.location.href = '/curso/mudanca-status-bug.html?idBug=' +idBug;
+			$window.location.href = '/bugtracker/mudanca-status-bug.html?idBug=' +idBug;
 		};
 		this.direcionaParaHistorico = function(idBug) {
-			$window.location.href = '/curso/historico-bug.html?idBug=' +idBug;
+			$window.location.href = '/bugtracker/historico-bug.html?idBug=' +idBug;
 		};
 	});
 })();

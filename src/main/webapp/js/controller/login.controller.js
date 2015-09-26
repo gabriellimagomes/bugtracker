@@ -11,7 +11,7 @@
 						var auth = getHeader('Authorization');
 						$scope.$storage = $localStorage.$reset();
 						$scope.$storage.auth = auth;
-						$window.location.href = '/curso/listagem-bugs.html';
+						$window.location.href = '/bugtracker/listagem-bugs.html';
 					})
 					.error(function() {
 						$scope.$storage = $localStorage.$reset();
