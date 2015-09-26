@@ -21,7 +21,7 @@
 		
 		$scope.logout = function() {
 			$localStorage.$reset();
-			$window.location.href = '/curso/login.html';
+			$window.location.href = '/bugtracker/login.html';
 		};
 	});
 })();
