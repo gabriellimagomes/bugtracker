@@ -32,7 +32,7 @@ public class BugControllerTest {
 
 	// @Test
 	public void deveListarTodosOsBugs() throws Exception {
-		JsonPath json = basicLogin.get("/curso/bugtracker/bugs").andReturn().jsonPath();
+		JsonPath json = basicLogin.get("/bugtracker/bugs").andReturn().jsonPath();
 
 		List<Bug> list = json.get("");
 		Assert.assertEquals(3, list.size());
@@ -40,7 +40,7 @@ public class BugControllerTest {
 
 	// @Test
 	public void deveBuscarUmBugPeloId() {
-		JsonPath json = basicLogin.get("/curso/bugtracker/bugs/1").andReturn().jsonPath();
+		JsonPath json = basicLogin.get("/bugtracker/bugs/1").andReturn().jsonPath();
 
 		Bug bug = json.getObject("", Bug.class);
 
